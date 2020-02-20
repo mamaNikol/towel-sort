@@ -2,12 +2,10 @@
 // You should implement your task here.
 
 module.exports = function towelSort (matrix) {
-  if(matrix === undefined) {
-    return [];
-  }
-let arr = matrix.flat();
-return arr.sort(function (a, b) {
-    return a - b;
-});
-}
-
+    if(!matrix) return [];
+  return matrix.reduce((acc, arr, i) => {
+    if(i % 2) arr.reverse();
+    acc.push(arr);
+    return acc;
+  }, []).flat(2);
+};
